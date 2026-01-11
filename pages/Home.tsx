@@ -9,41 +9,45 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[500px] overflow-hidden">
+      {/* Hero Section - 採用全新高品質貓咪主視覺圖 */}
+      <section className="relative h-[550px] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1513360309081-38f0d3d95c76?auto=format&fit=crop&q=80&w=1600"
-          alt="Cat Hero"
-          className="w-full h-full object-cover"
+          src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=1600"
+          alt="Featured Cat"
+          className="w-full h-full object-cover transition-transform duration-[20s] scale-110 hover:scale-100"
         />
-        <div className="absolute inset-0 bg-black/30 flex items-center">
+        {/* 漸層遮罩，讓文字更立體 */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-              讓每一隻街貓，都有溫暖的歸宿
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 drop-shadow-md opacity-90 font-medium">
-              領養，不棄養
-            </p>
-            <Link
-              to="/gallery"
-              className="bg-[#F39C12] text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-[#e67e22] transition-all transform hover:scale-105 inline-block shadow-lg"
-            >
-              立即尋找伴侶
-            </Link>
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl leading-tight">
+                讓每一隻街貓，<br />都有溫暖的歸宿
+              </h1>
+              <p className="text-xl md:text-2xl mb-10 drop-shadow-lg opacity-90 font-medium tracking-wide">
+                用愛終止流浪，領養即是給予重生的機會。
+              </p>
+              <Link
+                to="/gallery"
+                className="bg-[#F39C12] text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-[#e67e22] transition-all transform hover:scale-105 inline-block shadow-2xl hover:shadow-orange-500/20"
+              >
+                立即尋找伴侶
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* News Summary */}
+      {/* News Summary - 移除背景圖，改為純淨的磨砂玻璃風格 */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-10 mb-20">
-        <div className="bg-gray-100/90 backdrop-blur rounded-3xl p-8 shadow-xl border border-white/50">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/40 overflow-hidden min-h-[160px] flex items-center">
+          {/* 文字內容區塊 */}
+          <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {NEWS_DATA.map((news) => (
-              <div key={news.id} className="border-l-4 border-[#F39C12] pl-4">
-                <span className="text-xs font-bold text-[#F39C12] uppercase tracking-wider">
+              <div key={news.id} className="border-l-4 border-[#F39C12] pl-5 group cursor-default">
+                <span className="text-xs font-black text-[#F39C12] uppercase tracking-widest block mb-2">
                   【{news.category}】
                 </span>
-                <p className="text-gray-800 text-sm mt-1 leading-relaxed line-clamp-3">
+                <p className="text-gray-800 text-sm leading-relaxed line-clamp-3 font-semibold group-hover:text-gray-600 transition-colors">
                   {news.content}
                 </p>
               </div>
